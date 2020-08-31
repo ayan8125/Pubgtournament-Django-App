@@ -1,0 +1,396 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Create An Abookshelf Account and start buying and selling books.">
+  <meta name="author" content="">
+
+ 
+  <title>GamersJam | Signup Account of  GamersJam</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- <link rel="icon" type="image/x-icon" href="{% static 'bookstore/shelf.jpg' %}"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Custom styles for this template-->
+  <link href="{% static 'users/css/sb-admin-2.min.css' %}" rel="stylesheet">
+ 
+  <link href="{% static 'users/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'users/css/signup.css' %}" rel="stylesheet">
+  
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+<link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+</head>
+
+<body class="">
+
+
+  <div class="loader" id="loaders"></div> 
+
+
+  <div class="container" id="hero">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center" id="hero">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show bg-white" role="alert" style="position: absolute;text-align: center;z-index: 1;">
+            {% for message in messages %}
+            <span  style="font-weight: bold;font-family: Special Elite,cursive;">  <i class="fas fa-check-circle"></i> {{ message }} </span>
+            {% endfor %}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         {% endif %}
+
+        <div class="card o-hidden border-0 shadow-lg my-5" id="maincard">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row" id="row1">
+
+              <div class="col-lg-6 d-none d-lg-block">
+
+                <div class="p-5 svg" >
+
+
+
+                  <img src="{% static 'users/images/signup.png' %}" alt="" id="img">
+
+                  
+
+
+                </div>
+
+
+
+
+
+
+              </div>
+
+
+
+                <div class="col-lg-6 rightframe" >
+
+
+         
+
+
+
+
+
+
+
+
+
+
+                  <div class="containers">
+                    <form class="form-horizontal" id="validateForm1">
+                        {% csrf_token %}
+                        <h1>Welcome</h1>
+                        <fieldset>
+                            <!-- Email input-->
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="textinput">
+                                    Name
+                                </label>
+                                <div class="col-md-12">
+                                    <input id="name" name="textinput" 
+                                    type="text" autocomplete="off" 
+                                    placeholder="Your Name" 
+                                    class="form-control input-md">
+                                    <div class="invalid-feedback" id="nameinvalid">
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="textinput">
+                                    Email
+                                </label>
+                                <div class="col-md-12">
+                                    <input id="email" name="textinput" 
+                                    type="email" autocomplete="off" 
+                                    placeholder="Enter your email address" 
+                                    class="form-control input-md">
+                                    <div class="invalid-feedback" id="emailinvalid">
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="textinput">
+                                    Mobile Number
+                                </label>
+                                <div class="col-md-12">
+                                    <input id="number" name="textinput" 
+                                    type="number" autocomplete="off" 
+                                    placeholder="Enter Mobile Number" 
+                                    class="form-control input-md">
+                                    <div class="invalid-feedback" id="numberinvalid">
+                                      </div>
+                                </div>
+                            </div>
+                         
+                            <!-- Button -->
+                            
+                            <div class="form-group">
+                                <a href="#" class="btn login-btn btn-block" id="nextform">
+                                    NEXT
+                                </a>    
+                            </div>
+                            <div class="ex-account text-center">
+                                <p>Already have an account? Signin 
+                                    <a href="/">here</a>
+                                </p>
+                                <div class="divider"></div>
+                            </div>
+                        </fieldset>
+                    </form>   
+                </div>
+            
+
+
+
+
+
+
+            
+                  <form class="form-horizontal" id="validateForm2">
+                      <!-- <h1>Welcome</h1> -->
+                      <fieldset>
+                          <!-- Email input-->
+                          <div class="form-group">
+                              <label class="col-md-12 control-label" for="textinput">
+                                  OTP
+                              </label>
+                              <div class="col-md-12">
+                                  <input id="otp" name="textinput" 
+                                  type="text" autocomplete="off" 
+                                  placeholder="Enter OTP" 
+                                  class="form-control input-md">
+                                  <div class="invalid-feedback" id="otpinvalid">
+                                </div>
+                              </div>
+                          </div>
+                          
+                   
+                          <!-- Button -->
+                          
+                          <div class="form-group">
+                              <a href="#" class="btn login-btn btn-block" id="nextotpsubmit">
+                                 SubmitOtp
+                              </a>    
+                          </div>
+                        
+                      </fieldset>
+                  </form>   
+              
+          
+
+
+
+
+
+          
+                <form class="form-horizontal" id="validateForm3">
+                    <fieldset>
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="textinput">
+                                Password
+                            </label>
+                            <div class="col-md-12">
+                                <input id="password" class="form-control input-md"
+                                name="password" type="password" 
+                                placeholder="Enter your password" >
+                                <span class="show-pass" onclick="toggle()">
+                                    <i class="far fa-eye" onclick="myFunction(this)"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Password input-->
+                        <div class="form-group">
+                            <label class="col-md-12 control-label" for="passwordinput">
+                                Password
+                            </label>
+                            <div class="col-md-12">
+                                <input id="confirmpassword" class="form-control input-md"
+                                name="password" type="password" 
+                                placeholder="Enter your password" >
+                                <span class="show-pass" >
+                                    <i class="far fa-eye" onclick="mytoggle(this)"></i>
+                                </span>
+                                <div id="popover-password">
+                                    <p><span id="result"></span></p>
+                                    <div class="progress">
+                                        <div id="password-strength" 
+                                            class="progress-bar" 
+                                            role="progressbar" 
+                                            aria-valuenow="40" 
+                                            aria-valuemin="0" 
+                                            aria-valuemax="100" 
+                                            style="width:0%">
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled">
+                                        <li class="">
+                                            <span class="low-upper-case">
+                                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                                &nbsp;Lowercase &amp; Uppercase
+                                            </span>
+                                        </li>
+                                        <li class="">
+                                            <span class="one-number">
+                                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                                &nbsp;Number (0-9)
+                                            </span> 
+                                        </li>
+                                        <li class="">
+                                            <span class="one-special-char">
+                                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                                &nbsp;Special Character (!@#$%^&*)
+                                            </span>
+                                        </li>
+                                        <li class="">
+                                            <span class="eight-character">
+                                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                                &nbsp;Atleast 8 Character
+                                            </span>
+                                        </li>
+                                        <li class="">
+                                            <span class="password-match">
+                                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                                &nbsp;Password Match
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        
+                        <div class="form-group">
+                            <a href="#" class="btn login-btn btn-block" id="nextcreatesubmit">
+                                Create Account
+                            </a>    
+                        </div>
+                    </fieldset>
+                </form>   
+        
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+<!------
+
+next row
+
+-->
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+         
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="note" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #eb648c; color: white;height:auto;margin-bottom: 2rem;text-align: center;margin-left: -0.1rem;">
+ <h3 class="modal-title" id="exampleModalLabel" style="text-align: center;position: initial;text-align: center"> </h3>
+  
+        </div>
+        <div class="modal-body" style="text-align: center;">
+                <i class="fas fa-mail" style="color: #eb648c;"></i>
+                <span style="font-weight: bold;"> <i class="fas fa-check-circle"></i> Please check Your Inbox, a mail has been send at your given email address with further instructions of registration Process.</span>
+
+        </div>
+        <div class="modal-footer" id="buttons">
+
+          <a href ="{% url 'home' %}" style="text-decoration: none;"><button type="button" class="btn btn-info" style="font-size: 1rem;padding:0.5rem 1rem;font-weight:bold;background-color: #eb648c !important;">Ok</button></a>
+        </div>
+      </div>
+    </div>
+ </div>
+ <script src="{% static 'users/js/signup.js' %}"></script> 
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'myadmin/jquery.min.js' %}"></script>
+
+<script src="{% static 'myadmin/bootstrap.bundle.min.js' %}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'myadmin/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'myadmin/sb-admin-2.min.js' %}"></script>
+
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</body>
+
+</html>

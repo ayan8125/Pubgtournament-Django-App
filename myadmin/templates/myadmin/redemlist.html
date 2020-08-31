@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<link rel="icon" type="image/x-icon" href="{% static 'bookstore/shelf.jpg' %}">
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+ <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet"> -->
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+    <title>GamersJam | ORDERS LIST</title>
+</head>
+<style>
+
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10.5 auto;
+}
+
+td, th {
+  border: 1.5 solid grey;
+  text-align: left;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+    .top
+    {
+        /* height: 4rem; */
+        color: #fafafa;
+        font-family: special elite,cursive;
+        background-color: #eb648c;
+        text-align: center;
+    }
+    .name h4{
+        font-weight: bold;
+    }
+    th{
+        font-family: Bitter;
+        color: #eb648c;
+        font-weight: bold;
+        text-transform: capitalize;
+        padding: 0.5 0;
+    }
+    td{
+        font-weight: bold;
+        padding: 0.5 0;
+    }
+
+    table {    -pdf-keep-in-frame-mode: shri}
+</style>
+<body>
+    
+
+
+<div class="top">
+    <div class="img">
+        <img src="{% static  'bookstore/logo.png' %}" alt="" style="width: 40.2; height: 40.2;padding: 0.5 0;">
+    </div>
+    <div class="name">
+        <h4 style="padding: 0.5 0;">GamersJam</h4>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+
+
+
+<div class="table">
+
+
+    {% if redems %}
+   
+    <table class="table table-responsive table-bordered" border="2px solid" style="margin: 2rem auto;" >
+        <thead>
+        
+            <tr>
+                <!-- <th>Redemid</th> -->
+                <th>Status</th>
+                <th>user</th>
+                <th>Bank Name</th>
+                <th>Account Number</th>
+                <th>Holder name</th>
+                <th>IFSC CODE</th>
+               
+                <th>Redem Amt</th>
+              </tr>
+      
+        </thead>
+        <tbody>
+  
+        
+            {% for i in redems %}
+            
+              <tr>
+                <!-- <td style="font-weight: bold;"><a href="{% url 'EditRedem' i.redemid %}">{{ i.redemid }}</a></td> -->
+                <td style="font-weight: bold;">{{ i.redemstatus }}</td>
+                <td style="font-weight: bold;">{{ i.user }}</td>
+                <th style="font-weight: bold;color: #eb648c;width: 104.5;">{{i.wallets.givebankname}}</th>
+                <th style="font-weight: bold;color: #eb648c;">{{i.wallets.accoutno}}</th>
+                <th style="font-weight: bold;color: #eb648c;">{{i.wallets.holdername}}</th>
+                <th style="font-weight: bold;color: #eb648c;">{{i.wallets.IFSC}}</th>
+              
+                <td style="font-weight: bold;color: forestgreen;" >{{ i.redemamt }}</td>
+              </tr>
+            {% endfor %}
+         
+         
+         
+  
+   {% endif %}
+</tbody>
+</table>
+
+  
+
+
+
+
+        <!-- </tbody>
+      </table> -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</body>
+</html>

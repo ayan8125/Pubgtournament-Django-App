@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamersJam | Regestraions for Tour</title>
+    <link rel="stylesheet" href="{% static 'tournaments/SoloRegestration.css' %}">
+      <!-- Custom styles for this template-->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+  <link href="{% static 'users/css/all.min.css' %}" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .loader{
+        display: none;
+    }
+    .maincontent{
+        filter: blur(0px);
+    }
+</style>
+<body>
+    
+
+    <div class="sidenav" id="sidenavs">
+        <div class="navbody">
+            <div class="closeicon">
+                <button class="close-btn" id="closebtns">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="navliks">
+                <ul class="navsliks">
+                    <li class="navlik">
+                        <a href="{% url 'pasttournaments' %}">
+                            <i class="fas fa-poll-h"></i>
+                            <h5>Recent Matches</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        <a href="#">
+                            <i class="fas fa-calendar"></i>
+                            <h5>Upcoming Events</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        {% if user.is_authenticated %}
+                        <a href="{% url  'Account' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Accounts</h5>
+                        </a>
+                        {% else %}
+                        <a href="{%  url 'Login' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Account</h5>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <header>
+
+     
+        
+        <div class="firstend">
+            <div class="hamburgeri">
+              <i class="fas fa-bars" id="hamburger"></i>
+            </div>
+            <div class="logoname">
+                <img src="{% static 'tournaments/images/logo2.png' %}" alt="" class="mylogo">
+          </div>
+          </div>
+
+        <nav class="links">
+            <ul>
+                
+                <li>
+                    <a href="{% url 'pasttournaments' %}" class="navlink">
+                        Match Results
+                    </a>
+                </li>
+               
+               
+
+            </ul>
+        </nav>
+
+    
+
+    <div class="endnav">
+
+            <ul class="navicons">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'mymatch' %}" class="navlink">
+                   
+                        <i class="fas fa-calendar-alt"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Account' %}" class="navlink">
+                   
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'home' %}" class="navlink">
+                        
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                          {% else %}
+                          <li>
+                            <a href="{% url 'Signup' %}" class="navlink">
+                           
+                                <h5 class="signup">Signup</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Login' %}" class="navlink">
+                                
+                                <h5 class="signup">Login</h5>
+                            </a>
+                        </li>
+                          {% endif %} 
+
+
+            </ul>
+       
+            </div>
+
+
+
+</header>
+
+
+<div class="loader" id="loaders"></div>
+
+    <main id="maincontent">
+        <div class="hero">
+
+        
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show bg-white" role="alert" style="position: absolute;text-align: center;z-index: 1;">
+            {% for message in messages %}
+            <span  style="font-weight: bold;font-family: Special Elite,cursive;">  <i class="fas fa-check-circle"></i> {{ message }} </span>
+            {% endfor %}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         {% endif %}
+
+        <div class="regestration">
+            {% if userisregestered %}
+            <h1>You have been already registered, for this tournament</h1>
+            {% else %}
+            <div class="userregestraion">
+                <div class="details">
+                    <h4>
+                        Enter your <img src="{% static 'tournaments/images/icons8-pubg-96.png' %}"> Username
+                    </h4>
+                </div>
+                <form method="POST" class="regestrationform" id="regstrationform">
+                    {% csrf_token %}
+                    {% if  username %}
+                    <div class="form-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" class="input-field" value="{{ username }}"  name="username" placeholder="PubgMobile Username">
+                    </div>
+
+                    {% else %}
+                    <div class="form-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" class="input-field" name="username" placeholder="PubgMobile Username">
+                    </div>
+                   
+                    {% endif %}
+                    <div class="form-field">
+                        <i class="fas fa-mobile"></i>
+                        <input type="number" id="userphone" class="input-field" value="{{ userphone }}"  name="number" placeholder="Regestered Mobile Number">
+                    </div>
+                    <button type="submit" id="regester" class="obutton">Regester me</button>
+                </form>
+
+                <div class="info">
+                    <ul class="infolist">
+                        {% if multipleuser  %}
+                        <li class="nav-list">
+                            <i class="fas fa-info"></i>  Enter the Username of Squad's leader.
+                        </li>
+                        {% endif %}
+                        <li class="nav-list">
+                            <i class="fas fa-info"></i>  Room-ID will be provided you by sms  before 20 minutes from starting time of tournament.
+                        </li>
+                        <li class="nav-list">
+                            <i class="fas fa-info"></i>  SMS Will be drop on your Regestered Mobile Number.
+                        </li>
+                        <li class="nav-list"></li>
+                        <li class="nav-list"></li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    </main>
+
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+
+var form = document.getElementById('regstrationform')
+var loader = document.getElementById('loaders')
+var hero = document.getElementById('maincontent')
+form.addEventListener('submit', function(e){
+loader.style.display='block'
+hero.style.filter = 'blur(5px)'
+})
+
+var leftarrow = document.getElementById('closebtns')
+var sidenavs = document.getElementById('sidenavs')
+var hamburger = document.getElementById('hamburger')
+var hamburgerbody = document.getElementById('hamburgerbody')
+
+
+hamburger.addEventListener('click', function(e){
+    sidenavs.classList.add('showsidenav')
+    hamburgerbody.style.display = 'none'
+})
+
+
+leftarrow.addEventListener('click', function(e){
+    sidenavs.classList.remove('showsidenav')
+    hamburgerbody.style.display = 'block'
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('./images/background.png/');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+
+/*side nav */
+
+
+.sidenav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    background-color:#FFA500;
+    border-radius: 0 2rem 2rem 2rem;
+    box-shadow: 0 0 16px;
+    transition: all 0.5s ease-in-out;
+    z-index: 12;
+    visibility: hidden;
+}
+.showsidenav{
+    visibility: visible;
+    height: 25rem;
+    width: 10rem;
+}
+.close-btn{
+background: transparent;
+margin: 1rem;
+position: absolute;
+border: none;
+margin-top: -1.5rem;
+margin-left: 0.5rem;
+color: #ffffff;
+padding: 0.5rem;
+border-radius:50%;
+transition:0.5s ease-in-out;
+}
+.close-btn:hover{
+    background-color:#ffffff;
+    color: #FFA500;
+}
+.close-btn i{
+    
+    font-size: 1rem;
+
+}
+.navsliks{
+    list-style: none;
+    font-family: bitter;
+    font-weight: bold;
+}
+
+.navliks a, .navliks li{
+    text-decoration: none;
+    color: #FFFFFF !important;
+}
+.navlik{
+    text-align: center;
+    color: #FFFFFF !important;
+}
+
+.navlik i{
+    font-size: 2rem;
+}
+
+.navlik{
+    margin: 2rem 1rem;
+}
+.navlik h5{
+    font-size: 0.8rem;
+    margin: 1rem auto;
+}
+.divide{
+    width: 100%;
+    height: 0.1rem;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    
+}
+.hamburgericon{
+    position: fixed;
+    bottom: 1rem;
+    right: 0.6rem;
+    z-index: 18;
+    display: none;
+}
+.navlik:hover{
+color: #ffffff;
+}
+
+.listsofbook{
+    color: #fafafa;
+    font-weight: bold;
+    font-family: Bitter;
+    padding: 1rem;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    transition: 0.15s ease-in-out all;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+    background-image: linear-gradient(120deg, #f6d365 0%, #ffa500 100%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: 0.5s ease-in-out;
+    float: right;
+  }
+  
+  
+  .listsofbook:hover{
+    cursor: pointer;
+    background-position: left bottom;
+    
+  }
+
+/*End side nav*/
+
+
+
+
+
+
+
+
+
+/*********/
+
+
+
+
+
+
+
+header li, a{
+    text-decoration: none !important;
+    color: orange !important;
+    font-weight: bold;
+    font-family: bitter;
+}
+
+header{
+    display:flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0rem 10% 3rem 10%;
+    max-width: 150rem;
+    background: white;
+    box-shadow: 0 0 16px saddlebrown;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+.scores{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.firstend{
+    display:flex;
+}
+
+.mylogo{
+    width: 10rem;
+    height: 8rem;
+}
+
+
+
+.logoname{
+    cursor: pointer;
+    background:orange;
+    /* padding: 3rem 1.5rem 0 1.5rem; */
+    margin-left: 1rem;
+}
+.hamburgeri{
+    margin-left: 1rem;
+    color: #FFA500;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+.tournament h4{
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: Special elite,cursive;
+    color: #FFA500;
+}
+.userimage{
+    width:3rem;
+    height: 3rem;
+    border-radius: 100%;
+    border: 1px solid #FFA500;
+
+}
+.media{
+    cursor: pointer;
+}
+.media-body h5{
+    font-weight: bold;
+    font-family: bitter;
+    font-size: 1rem;
+    color: grey;
+    
+}
+.media-body p{
+    font-weight: bold;
+    font-family: bitter;
+    color: gray;
+    margin-top: -0.5rem;
+    font-size: 0.8rem;
+    color:#e0e0d1;
+}
+
+.kills h4{
+    font-weight: bold;
+    font-family: bitter;
+    color: gray;
+    margin-top: -0.5rem;
+    font-size: 1rem;
+    color: grey;
+}
+
+.kills i{
+    color: crimson;
+}
+
+.divider{
+    width:100%;
+    height: 0.1rem;
+    background: #e0e0d1;
+    margin: auto 1rem;
+    border-radius: 1rem;
+    overflow-x: hidden;
+}
+
+
+.logoname h4{
+    font-weight:bold;
+    cursor: pointer;
+    font-family:special elite,cursive;
+    color: #ffffff;
+    font-size:2rem;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 0 2rem;
+}
+nav{
+    margin-left: 1rem;
+    transition: all .3s ease-in-out
+}
+
+.endnav{
+    margin-left:auto;
+    transition: all .3s ease-in-out
+}
+.endnav ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 0 1rem;
+    transition: all .3s ease-in-out
+}
+
+.endnav ul li a i:hover{
+    color: orange;
+}
+
+nav ul li a:hover{
+ color: orange
+
+}
+
+
+
+
+
+
+
+
+/**********/
+
+
+
+.regestration{
+    width: 50rem;
+    height: 28rem;
+    box-shadow: 0 0 16px rgba(0,0,0,0.4);
+    background-color: #fafafafa;
+    border-radius: 1rem;
+    
+    margin: 2rem auto;
+    display: flex;
+
+}
+
+.first{
+    background:linear-gradient(to bottom, rgb(255, 165, 0,0.7) 0%, #ffa500 100%),url("./images/solo.png") center no-repeat;
+    background-size: cover;
+}
+
+.second{
+    background:linear-gradient(to bottom, rgb(255, 165, 0,0.7) 0%, #ffa500 100%),url("./images/duo.png") center no-repeat;
+    background-size: cover;
+}
+
+.third{
+    background:linear-gradient(to bottom, rgb(255, 165, 0,0.7) 0%, #ffa500 100%),url("./images/squad.png") center no-repeat;
+    background-size: cover;
+}
+
+.clumns{
+    width:50%;
+    float: left;
+    height: 100%;
+    padding: 1.5rem;
+}
+.winnerbody{
+    
+    height: 100%;
+    width: 100%;
+    /* background-color:#FFA500;
+    background-image: url("./images/solo.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    
+    border-radius: 1rem;
+}
+
+.wuserimage{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 100%;
+    border: 2px solid #ffffff;
+    margin-top:1rem;
+}
+.winnerimg{
+    text-align:center;
+}
+.crown{
+    text-align: center;
+
+}
+.crown i{
+    font-size: 5rem;
+    color: #FFFFFF;
+}
+.winnername{
+    text-align: center;
+    margin: 1rem;
+}
+
+.winnername h4{
+    font-weight: bold;
+    font-family: special elite,cursive;
+    color:#ffffff;
+}
+.pdiv{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin:1rem;
+    background: #ffffff;
+    border-radius: 2rem;
+    padding: 0.5rem;
+}
+
+.wkills h4{
+    color:#FFA500;
+    font-weight: bold;
+    font-family: bitter;
+    
+}
+.reward{
+    font-weight: bold;
+    font-family: special elite,cursive;
+}
+.wreward h4{
+    font-weight: bold;
+    color:crimson;
+    font-size: 1.2rem;
+}
+#maincontent{
+    display: flex !important;
+    justify-content:center;
+}
+.hero{
+text-align: center;
+margin-top:10rem;
+}
+
+.regestrationform{
+padding: 1rem;
+}
+
+
+
+
+.obutton{
+    margin: 1rem auto;
+    float: right;
+    color: white;
+    background: orange;
+    padding: 1rem 1rem;
+    border: 1px solid;
+    border-radius: 2rem;
+    font-weight: bold;
+    font-family: bitter;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.obutton:hover{
+    background: #ffffff;
+    color: orange;
+    border: 1px solid orange;
+}
+
+
+
+
+
+
+.info{
+    margin: 1rem;
+
+}
+
+.infolist{
+    list-style: none;
+}
+
+.nav-list{
+    font-weight: bold;
+    font-family: bitter;
+    color: grey;
+    margin: 0.5rem auto;
+    font-size: 1rem;
+}
+
+.nav-list i{
+    color: forestgreen;
+}
+
+
+
+
+.loader{
+    border: 2rem solid #ffffff; 
+    border-top: 2rem solid orange; 
+    border-left: 2rem solid orange; 
+    border-right: 2rem solid orange; 
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loader{
+    position: fixed;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    
+  }
+
+
+
+
+/*side nav */
+
+
+.sidenav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    background-color:#FFA500;
+    border-radius: 0 2rem 2rem 2rem;
+    box-shadow: 0 0 16px;
+    transition: all 0.5s ease-in-out;
+    z-index: 12;
+    visibility: hidden;
+}
+.showsidenav{
+    visibility: visible;
+    height: 25rem;
+    width: 10rem;
+}
+.close-btn{
+background: transparent;
+margin: 1rem;
+position: absolute;
+border: none;
+margin-top: -1.5rem;
+margin-left: 0.5rem;
+color: #ffffff;
+padding: 0.5rem;
+border-radius:50%;
+transition:0.5s ease-in-out;
+}
+.close-btn:hover{
+    background-color:#ffffff;
+    color: #FFA500;
+}
+.close-btn i{
+    
+    font-size: 1rem;
+
+}
+.navsliks{
+    list-style: none;
+    font-family: bitter;
+    font-weight: bold;
+}
+
+.navliks a, .navliks li{
+    text-decoration: none;
+    color: #FFA500;
+}
+.navlik{
+    text-align: center;
+
+}
+
+.navlik i{
+    font-size: 2rem;
+}
+
+.navlik{
+    margin: 2rem 1rem;
+}
+.navlik h5{
+    font-size: 0.8rem;
+    margin: 1rem auto;
+}
+.divide{
+    width: 100%;
+    height: 0.1rem;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    
+}
+.hamburgericon{
+    position: fixed;
+    bottom: 5rem;
+    right: 0.6rem;
+    z-index: 18;
+    display: none;
+}
+.navlik:hover{
+color: #ffffff;
+}
+
+/*End side nav*/
+
+
+
+
+@media screen and (max-width: 400px){
+
+   
+    .nav-list{
+        font-size: 0.8rem;
+    }
+ 
+   
+ 
+}
+
+@media screen and (max-width:600px){
+    .clumns{
+        float: none;
+    }
+    .clumns{
+     width: 100%;   
+    }
+    .regestration{
+        display: block;
+        height: auto;
+    }
+    header{
+        padding: 0 0.5rem 0 0.5rem;
+    }
+}
+
+@media screen and (max-width:770px){
+    .links{
+        display: none;
+    }
+    #useraccount{
+        display: none;
+    }
+    
+    .mylogo{
+        width: 8rem;
+        height: 6rem;
+    }
+    .hamburgeri{
+        display:flex;
+    }
+}
+
+@media screen and (max-width:321px){
+    #maincontent{
+        padding: 0.2rem !important;
+    }
+    .scores{
+        padding: 0;
+    }
+    .logoname{
+        padding:1.8rem 0.5rem 0 0.5rem;
+    }
+    .logoname h4{
+        font-size:1.5rem;
+    }
+    .mylogo{
+        width: 5rem;
+        height: 3rem;
+    }
+}
+
+@media screen and (max-width:800px){
+   .regestration{
+       width: 100%;
+   }
+   .winnerbody{
+       height: 25rem;
+   }
+   #maincontent{
+       display: block !important;
+       padding:1rem;
+   }
+}

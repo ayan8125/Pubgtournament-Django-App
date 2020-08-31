@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamersJam | Regestraions for Tour</title>
+    <link rel="stylesheet" href="{% static 'tournaments/SoloRegestration.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/redemymoney.css' %}">
+    
+      <!-- Custom styles for this template-->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+  <link href="{% static 'users/css/all.min.css' %}" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .loader{
+        display: none;
+    }
+    .maincontent{
+        filter: blur(0px);
+    }
+</style>
+<body>
+    
+
+
+    <header>
+
+     
+        
+        <div class="logoname">
+          <img src="{% static 'tournaments/images/logo2.png' %}" alt="" class="mylogo">
+        </div>
+
+        <nav class="links">
+            <ul>
+                
+                <li>
+                    <a href="{% url 'pasttournaments' %}" class="navlink">
+                        Match Results
+                    </a>
+                </li>
+               
+               
+
+            </ul>
+        </nav>
+
+    
+
+    <div class="endnav">
+
+            <ul class="navicons">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'mymatch' %}" class="navlink">
+                   
+                        <i class="fas fa-calendar-alt"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'Account' %}" class="navlink">
+                   
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'home' %}" class="navlink">
+                        
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                          {% else %}
+                          <li>
+                            <a href="{% url 'Signup' %}" class="navlink">
+                           
+                                <h5 class="signup">Signup</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Login' %}" class="navlink">
+                                
+                                <h5 class="signup">Login</h5>
+                            </a>
+                        </li>
+                          {% endif %} 
+
+
+            </ul>
+       
+            </div>
+
+
+
+</header>
+
+
+<div class="loader" id="loaders"></div>
+
+    <main id="maincontent">
+        <div class="hero">
+
+        
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show bg-white" role="alert" style="position: absolute;text-align: center;z-index: 1;">
+            {% for message in messages %}
+            <span  style="font-weight: bold;font-family: Special Elite,cursive;">  <i class="fas fa-check-circle"></i> {{ message }} </span>
+            {% endfor %}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         {% endif %}
+
+        <div class="regestration">
+           
+
+
+            <div class="noe">
+                <span id="alernote" >
+                    We will transfer Your Money  into Your Bank Account.Provide Your Bank Account details.
+                </span>
+                
+                <form method="POST" id="redemform" style="margin: 1rem 0;">
+                
+ 
+                  {% csrf_token %}
+                    <!-- <div class="input-container">
+                      <img src="{% static 'users/images/bank.png' %}" alt="" style="width: 2rem;height: 2rem;">
+                        <input class="input" type="text" autocomplete="off" placeholder="Bank Name" name="bname" id="bankname" >
+                        <i class="fas fa-sort-up icon" style="transform: rotate(180deg);" id="dowmarrow"></i>
+                        <div class="dropdown-content bg-white" id="dlist" style="">
+                            <ul>
+               
+                            {% for i in banks %}
+                          <div class="bak" style="display: flex;padding: 0.5rem 0.4rem;">
+                            <img src="{% static 'users/images/bank.png' %}" alt="" style="width: 2rem;height: 2rem;">
+                            <li id="list{{ i.0 }}" onclick="assigninput(this)" style="padding-top: 0.5rem;">{{i.1}}</li>
+                         
+                          </div>
+                        {% endfor %}
+                       
+                        </ul>
+                          </div>
+                      </div> -->
+                      {% if wallet %}
+                      <div class="input-container">
+                        <i class="fas fa-user icon"></i>
+                        <input class="input" type="text" placeholder="Bank Holder Name" name="hname" value="{{wallet.holdername}}" id="holdername">
+                      </div>
+                      <div class="input-container" >
+                        <i class="fas fa-sort-numeric-up-alt icon"></i>
+                        <input class="input" type="text" placeholder="Account Number" name="accno" id="accountno" value="{{wallet.accoutno}}" >
+                      </div>
+                      <div class="input-container"  >
+                        <i class="fas fa-sort-numeric-up-alt icon"></i>
+                        <input class="input" type="text" placeholder="IfSC CODE" name="ifscode" id="ifscode" value="{{wallet.IFSC}}" >
+                      </div>
+                      {% else %}
+                      <div class="input-container">
+                        <i class="fas fa-user icon"></i>
+                        <input class="input" type="text" placeholder="Bank Holder Name" name="hname" id="holdername">
+                      </div>
+                      <div class="input-container" >
+                        <i class="fas fa-sort-numeric-up-alt icon"></i>
+                        <input class="input" type="text" placeholder="Account Number" name="accno" id="accountno" >
+                      </div>
+                      <div class="input-container"  >
+                        <i class="fas fa-sort-numeric-up-alt icon"></i>
+                        <input class="input" type="text" placeholder="IfSC CODE" name="ifscode" id="ifscode" >
+                      </div>
+
+                      {% endif %}
+        <div class="bt pb-2" style="text-align: center;">
+        <button type="button" id="redem">
+        Redem
+          </button>
+        </div>
+        
+                </form>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </main>
+
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{% static 'users/js/redemymoney.js' %}"></script>
+
+
+</body>
+</html>

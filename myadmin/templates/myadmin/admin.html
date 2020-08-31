@@ -1,0 +1,195 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Fjalla+One|Modak|Saira+Stencil+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'plumber/admin.css' %}">
+    <script src="https://kit.fontawesome.com/784b66feb8.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+    <!-- font-family: c
+font-family: 'Fjalla One', sans-serif;
+font-family: 'Bitter', serif;
+font-family: 'Saira Stencil One', cursive; -->
+</head>
+<style>
+
+#id_profile{
+    background-color: rgba(72,56,149,0.8);
+    border:none;
+}
+</style>
+<body style="background-color: #eb648c;">
+
+    <header>
+    <div class="container" id="head">
+        <nav>
+            <div class="brand" >
+            <a href="#" style="color: white;font-size:3rem;text-decoration: none;">
+                Ayan
+            </a>
+        </div>
+        <div class="menu">
+                <!-- <i class="fas fa-bars" onclick="myfunction()"></i> -->
+                <ul class="nav-list" id="navs">
+                
+               
+                <li class="nav-items">
+                    <a href="#" class="nav-link" style="color: #fafafa;"><i class="fas fa-shopping-cart" style="cursor: pointer;"></i></a> 
+            </li>
+            <li class="nav-items">
+                    <a href="#" class="nav-link" id="logout" style="color: #fafafa;"><i class="fas fa-bell"></i></a>
+            
+                </li>
+                <li class="nav-items">
+                    <a href="#" class="nav-link" style="color: #fafafa;"><i class="fas fa-home"  style="cursor: pointer;"></i></a>
+            
+                </li>
+            
+                </ul>
+        </div>
+    
+        </nav>
+    </div>
+
+    </header>
+  <br>
+    
+  <main id="main1">
+    
+    <div class="row">
+        <div class="col-2" id="index" style="background-color: purple;margin: 2rem;color: white;">
+        
+        <h5></h5>
+        
+        <div><ul class="content1" style="flex-direction: column;">
+
+            <li>Home</li>
+            <li>About</li>
+            <li>Orders</li>
+            <li>Hire</li>
+            <li>Employes</li>
+            <li>Plumers</li>
+            <li>Electricians</li>
+            <li>TV Repairer</li>
+            <li>Washing Machine</li>
+            <li>Motor Repairer</li>
+        </ul></div>
+        
+        </div>
+
+
+
+        <div class="col-9" id="panel" style="background-color: royalblue;">col-8
+        
+
+            <div class="row">
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-user" style="font-size: 5rem;"></i><br>
+                        <span>User<br>(50)</span></h3>
+                    </div>
+                </div>
+
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Orders<br>(50)</span></h3>
+                    </div>
+                </div>
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Plumbing<br>(50)</span></h3>
+                    </div>
+                </div>
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Electricity<br>(50)</span></h3>
+                    </div>
+                </div>
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Repairing <br>(50)</span></h3>
+                    </div>
+                </div>
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-user" style="font-size: 5rem;"></i><br>
+                        <span>Meechants<br>(50)</span></h3>
+                    </div>
+                </div>
+
+
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Plumbers<br>(50)</span></h3>
+                    </div>
+                </div>
+
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Active Work<br>(50)</span></h3>
+                    </div>
+                </div>
+
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-user" style="font-size: 5rem;"></i><br>
+                        <span>Electricians<br>(50)</span></h3>
+                    </div>
+                </div>
+
+
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>TV Repairer<br>(50)</span></h3>
+                    </div>
+                </div>
+
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-user" style="font-size: 5rem;"></i><br>
+                        <span>Motor<br>(50)</span></h3>
+                    </div>
+                </div>
+                <div class="col4" style="height:15rem;width:23rem;background-color: beige;margin: 2rem;"> 
+                    <div class="con" style="padding: 2rem;">
+                        <h3 style="text-align: center;"><i class="fa fa-shopping-cart" style="font-size: 5rem;"></i><br>
+                        <span>Washining Machine<br>(50)</span></h3>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+      </div>
+    
+
+
+
+</main>
+
+      
+</div>
+    <footer>
+        &copy;2019 All Rights Reserved By Ayan Shaikh 
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+</body>
+</html>

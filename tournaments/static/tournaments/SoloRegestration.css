@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('./images/background.png/');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+/*********/
+
+
+
+
+
+
+
+header li, a{
+    text-decoration: none;
+    color: orange;
+    font-weight: bold;
+    font-family: bitter;
+}
+
+header{
+    display:flex ;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0rem 10% 3rem 10%;
+    max-width: 150rem;
+    background: white;
+    box-shadow: 0 0 16px saddlebrown;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+
+.firstend{
+    display:flex;
+}
+
+.mylogo{
+    width: 10rem;
+    height: 8rem;
+}
+
+.logoname{
+    cursor: pointer;
+    background:orange;
+    /* padding: 3rem 1.5rem 0 1.5rem; */
+    margin-left: 1rem;
+}
+.hamburgeri{
+    margin-left: 1rem;
+    color: #FFA500;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+.logoname h4{
+    font-weight:bold;
+    cursor: pointer;
+    font-family:special elite,cursive;
+    color: #ffffff;
+    font-size:2rem;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 0 2rem;
+}
+nav{
+    margin-left: 1rem;
+    transition: all .3s ease-in-out
+}
+
+.endnav{
+    margin-left:auto;
+    transition: all .3s ease-in-out
+}
+.endnav ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 0 1rem;
+    transition: all .3s ease-in-out
+}
+
+.endnav ul li a i:hover{
+    color: orange;
+}
+
+nav ul li a:hover{
+ color: orange
+
+}
+
+
+
+
+
+
+
+
+/**********/
+
+
+
+.regestration{
+    width: 25rem;
+    height: 28rem;
+    box-shadow: 0 0 16px rgba(0,0,0,0.4);
+    background-color: #fafafafa;
+    border-radius: 1rem;
+}
+
+.hero{
+    display: flex;
+    justify-content: center;
+    margin-top: 13rem;
+}
+
+.regestrationform{
+padding: 1rem;
+}
+
+.form-field{
+    width: 100%;
+    display: flex;
+    margin: 1rem auto;
+    background-color:#fafafafa;
+    border-radius:1rem;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+}
+
+.form-field i{
+    background-color: orange;
+    padding: 1rem;
+    border-right: 0;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    color: #ffffff;
+    
+}
+
+
+
+.obutton{
+    margin: 1rem auto;
+    float: right;
+    color: white;
+    background: orange;
+    padding: 1rem 1rem;
+    border: 1px solid;
+    border-radius: 2rem;
+    font-weight: bold;
+    font-family: bitter;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.obutton:hover{
+    background: #ffffff;
+    color: orange;
+    border: 1px solid orange;
+}
+
+.regestrationform input{
+outline: none;
+border: none;
+background: transparent;
+padding-left: 0.5rem;
+font-family: special elite,cursive;
+font-weight: bold;
+}
+
+
+
+.details {
+text-align: center;
+
+}
+
+.details h4{
+    font-weight: bold;
+    font-family: bitter;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+
+.info{
+    margin: 1rem;
+
+}
+
+.infolist{
+    list-style: none;
+}
+
+.nav-list{
+    font-weight: bold;
+    font-family: bitter;
+    color: grey;
+    margin: 0.5rem auto;
+    font-size: 1rem;
+}
+
+.nav-list i{
+    color: forestgreen;
+}
+
+
+/*side nav */
+
+
+.sidenav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    background-color:#FFA500;
+    border-radius: 0 2rem 2rem 2rem;
+    box-shadow: 0 0 16px;
+    transition: all 0.5s ease-in-out;
+    z-index: 12;
+    visibility: hidden;
+}
+.showsidenav{
+    visibility: visible;
+    height: 25rem;
+    width: 10rem;
+}
+.close-btn{
+background: transparent;
+margin: 1rem;
+position: absolute;
+border: none;
+margin-top: -1.5rem;
+margin-left: 0.5rem;
+color: #ffffff;
+padding: 0.5rem;
+border-radius:50%;
+transition:0.5s ease-in-out;
+}
+.close-btn:hover{
+    background-color:#ffffff;
+    color: #FFA500;
+}
+.close-btn i{
+    
+    font-size: 1rem;
+
+}
+.navsliks{
+    list-style: none;
+    font-family: bitter;
+    font-weight: bold;
+}
+
+.navliks a, .navliks li{
+    text-decoration: none;
+
+}
+.navlik{
+    text-align: center;
+
+}
+
+.navlik i{
+    font-size: 2rem;
+}
+
+.navlik{
+    margin: 2rem 1rem;
+}
+.navlik h5{
+    font-size: 0.8rem;
+    margin: 1rem auto;
+}
+.divide{
+    width: 100%;
+    height: 0.1rem;
+    background-color: #FFFFFF;
+    border-radius: 0.5rem;
+    
+}
+.hamburgericon{
+    position: fixed;
+    bottom: 5rem;
+    right: 0.6rem;
+    z-index: 18;
+    display: none;
+}
+.navlik:hover{
+color: #ffffff;
+}
+
+/*End side nav*/
+
+
+
+.loader{
+    border: 2rem solid #ffffff; 
+    border-top: 2rem solid orange; 
+    border-left: 2rem solid orange; 
+    border-right: 2rem solid orange; 
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loader{
+    position: fixed;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    
+  }
+
+
+
+
+
+
+
+@media screen and (max-width: 400px){
+    .details h4{
+        font-size: 1rem;
+    }
+    .regestration{
+        width: 100%;
+        margin: auto 1rem;
+    }
+    .nav-list{
+        font-size: 0.8rem;
+    }
+    .obutton{
+        padding: 0.5rem 0.5rem ; 
+    }
+    .info{
+        margin-top: 4rem;
+    }
+    .regestration{
+        height: 30rem;
+    }
+}
+
+@media screen and (max-width:750px){
+    .links{
+        display:none;
+    }
+    .hamburgeri{
+        display:flex;
+    }
+    .mylogo{
+        width: 8rem;
+        height: 6rem;
+    }
+}
+
+@media screen and (max-width:600px){
+    
+    header{
+        padding: 0 0.5rem 0 0.5rem;
+    }
+}
+
+@media screen and (max-width:320px){
+    .mylogo{
+      width: 5rem;
+      height: 3rem;
+  }
+  }

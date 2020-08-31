@@ -1,0 +1,724 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamersJam | Participate in Tournament and Earn. </title>
+    <link rel="stylesheet" href="{% static 'tournaments/test.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="sidenav" id="sidenavs">
+        <div class="navbody">
+            <div class="closeicon">
+                <button class="close-btn" id="closebtns">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="navliks">
+                <ul class="navsliks">
+                    <li class="navlik">
+                        <a href="{% url 'pasttournaments' %}">
+                            <i class="fas fa-poll-h"></i>
+                            <h5>Recent Matches</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        <a href="#">
+                            <i class="fas fa-calendar"></i>
+                            <h5>Upcoming Events</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        {% if user.is_authenticated %}
+                        <a href="{% url  'Account' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Accounts</h5>
+                        </a>
+                        {% else %}
+                        <a href="{%  url 'Login' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Account</h5>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="wraps" id="wrap">
+    <header class="headers" id="mainnav">
+
+     
+        <div class="firstend">
+          <div class="hamburgeri">
+            <i class="fas fa-bars" id="hamburger"></i>
+          </div>
+          <div class="logoname">
+            <h4>
+                GamersJam
+            </h4>
+        </div>
+        </div>
+                    
+
+                    <nav class="links">
+                        <ul>
+                            
+        
+                     
+                            <li>
+                                <a href="{% url 'pasttournaments' %}" class="navlink">
+                                    Match Results
+                                </a>
+                            </li>
+                           
+                           
+ 
+                        </ul>
+                    </nav>
+
+                
+
+                <div class="endnav">
+
+                        <ul class="navicons">
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'mymatch' %}" class="navlink">
+                               
+                                    <i class="fas fa-calendar-alt"></i>
+                                </a>
+                            </li>
+                            <li id="useraccount">
+                                <a href="{% url 'Account' %}" class="navlink">
+                               
+                                    <i class="fas fa-user"></i>
+                                </a>
+                            </li>
+                            <li id="wallet">
+                                <a href="#" class="navlink" id="">
+                                    <i class="fas fa-wallet"></i>
+                                </a>
+                                
+<div class="typeoinvoice bg-white p-2" id="popup" >
+    <ul class="typod">
+      <a href="#">
+          <li>Balance - <i class="fas fa-rupee-sign"></i>{{wallet.Balanceamt}}</li>
+        
+    </a>
+   
+      <hr class="divide">
+      {% if noredem %}
+      <a href="#"><li class="redemb">
+          <button class="redem1">
+              Redem
+          </button>
+      </li></a>
+      {% else %}
+   
+      <a href="{% url 'redemymoney'  %}"><li class="redemb">
+          <button class="redem">
+              Redem
+          </button>
+      </li></a>
+    
+      {% endif %}
+    </ul>
+  
+
+   
+    
+  </div>
+                            </li>
+                            <li>
+                                <a href="#" class="navlink" id="logoutag">
+                                    
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </a>
+                            </li>
+
+                          {% else %}
+                          <li>
+                            <a href="{% url 'Signup' %}" class="navlink">
+                           
+                                <h5 class="signup">Signup</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'Login' %}" class="navlink">
+                                
+                                <h5 class="signup">Login</h5>
+                            </a>
+                        </li>
+                          {% endif %} 
+
+                        </ul>
+                   
+                        </div>
+         
+     
+
+        </header>
+        {% if messages %}
+<div class="message" id="messages">
+<i class="fas fa-times" onclick="{document.getElementById('messages').style.display='none'}"></i>
+{% for message in messages %}    
+<p>{{message}}</p>
+{% endfor %}
+</div>
+{% endif %}
+
+
+{% if user.is_authenticated %}
+<div class="notifications m-2">
+
+
+  <div class="mainnotibody" id="mainnotibody1">
+    <div class="proxydiv">
+      <div class="logobak">
+        <i class="fas fa-times" id="backarrow"></i>
+        <h5>Notifications</h5>
+      </div>
+      <h4>
+        Hey , {{user.first_name}}
+      </h4>
+    </div>
+    <div class="notifbox mr-2 ml-2 pt-5">
+   
+      <div class="date">
+        <span style="font-weight: bold;font-family: bitter;">
+        turesday, 12.pm
+        </span>
+      </div>
+      
+      
+     
+      <div class="mainmess">
+        <h4></h4>
+        <div class="notimessages mr-2 ml-2 p-2">
+          <span class="p-2" >
+            Hello world!
+            <br>
+            <a href="#" style="color: yellow;">ww.google.com</a>
+          </span>
+          <br>
+          <div class="time">
+            <span >
+             12.02 pm
+            </span>
+          </div>
+  
+        </div>
+        
+      </div>
+
+      <div class="mainmess">
+        <h4></h4>
+        <div class="notimessages mr-2 ml-2 p-2">
+          <span class="p-2" >
+            Hello world!
+            <br>
+            <a href="#" style="color: yellow;">ww.google.com</a>
+          </span>
+          <br>
+          <div class="time">
+            <span >
+             12.02 pm
+            </span>
+          </div>
+  
+        </div>
+        
+      </div>
+
+      <div class="mainmess">
+        <h4></h4>
+        <div class="notimessages mr-2 ml-2 p-2">
+          <span class="p-2" >
+            Hello world!
+            <br>
+            <a href="#" style="color: yellow;">ww.google.com</a>
+          </span>
+          <br>
+          <div class="time">
+            <span >
+             12.02 pm
+            </span>
+          </div>
+  
+        </div>
+        
+      </div>
+
+      <div class="mainmess">
+        <h4></h4>
+        <div class="notimessages mr-2 ml-2 p-2">
+          <span class="p-2" >
+            Hello world!
+            <br>
+            <a href="#" style="color: yellow;">ww.google.com</a>
+          </span>
+          <br>
+          <div class="time">
+            <span >
+             12.02 pm
+            </span>
+          </div>
+  
+        </div>
+        
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+  <button type="button" id="listsofbook1"  class="listsofbook" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-bell"></i><sup id="notify">{{noseen}}</sup></button>
+ <!-- <a href="#" id="listsofbook2" ><button type="button"  class="listsofbook" ><i class="fas fa-bell"></i><sup id="notify">{{noseen}}</sup></button></a>  -->
+    
+</div>
+{% endif %}
+
+<div class="logout" id="logoutmodal">
+    <div class="tesx">
+        <div class="close">
+            <i class="fas fa-times" id="closemodals"></i>
+        </div>
+        <h4> Are you sure you want to log out?</h4>
+        <div class="buttons">
+            <a href="{% url 'Logout' %}"><button class="button yessure">
+                Yes, sure
+            </button>
+            </a>
+            <button class="button cancel" id="closemodal">
+                No, cancel
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+    <main id="hero">
+
+
+        <div class="frame">
+            <div class="leftframe">
+                <div class="head">
+                    <h4>
+                        01
+                    </h4>
+    
+    
+                    <span> {{tours.0.tourname}} </span>
+    
+    
+                    <H2>DRIVE YOUR BEAST</H2>
+                </div>
+
+                <div class="schedules">
+                    <div class="date">
+                       <div class="day">
+                        <div class="sday">
+                            <h4 class="aday">{{tours.0.giveday}}</h4>
+                            <h4 class="month">
+                                {{tours.0.fivemonth}}
+                            </h4>
+                        </div>
+
+                       </div>
+
+                       <div class="day">
+                        <div class="sday">
+                            <h4 class="aday">{{tours.0.givetime}}</h4>
+                            <h4 class="month">
+                                {{tours.0.giveamorpm}}
+                            </h4>
+                        </div>
+
+                       </div>
+
+
+                    </div>
+
+                    <div class="timer">
+                        <div class="days">
+                            <h4>
+                                <span id="{{tours.0.tourid}}tday" class="tdate">3</span> <span> days</span>&nbsp;&nbsp;:&nbsp;&nbsp;
+                            </h4>
+                        
+                        </div>
+                        <div class="hours">
+                         <h4>
+                            <span id="{{tours.0.tourid}}thour" class="tdate">12</span>  <span> hh</span> &nbsp;&nbsp;:&nbsp;&nbsp;
+                         </h4>
+
+                        </div>
+                        <div class="minurtes">
+                            <h4>
+                                <span id="{{tours.0.tourid}}tmin" class="tdate">56</span>     <span> min</span>&nbsp;&nbsp;:&nbsp;&nbsp;
+                            </h4>
+                        </div>
+                        <div class="seconds">
+                            <h4>
+                                <span id="{{tours.0.tourid}}tsec" class="tdate">12</span>    <span> sec</span>
+                            </h4>
+                        </div>
+                    </div>
+<!-- 
+                    <div class="players">
+                        <div class="available">
+                            <h4>
+                                50
+                            </h4>
+                        </div>
+                        <div class="total">
+                            <h4>
+                                100
+                            </h4>
+                        </div>
+
+                        <div class="occupied">
+                            <h4>
+                                50
+                            </h4>
+                        </div>
+                    </div> -->
+
+                    <div class="winprice">
+
+                        <h3>
+                            <span> Reward - </span>
+                            <i class="fas fa-rupee-sign"></i> {{tours.0.reward}}
+                        </h3>
+
+                    </div>
+
+                    <div class="settlements">
+                        <div class="entryfee">
+                            <h3>
+                                <span>Entry Fee - </span>
+                                <i class="fas fa-rupee-sign"></i> {{tours.0.entryfee}}
+                            </h3>
+                        </div>
+
+                        <div class="regesterme">
+                            {% if tours.0.availseats > 0 %}
+                            <a  href="{% url 'Regestrations' 1 tours.0.tourid %}"><button>
+                                BOOK MY SPOT
+                            </button></a>
+                            {% else %}
+                            <button style="opacity: 0.4;">
+                                BOOK MY SPOT
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if tours.0.availseats == 0 %}
+                    <div class="closse">
+                        <h5>Regestrations are closed, because  regestrations has been full for this tournaments</h5>
+                    </div>
+                    {% endif %}
+                </div>
+               
+
+            </div>
+            <div class="rightframe">
+                <img src="{% static 'tournaments/images/solo.png' %}" alt="" srcset="">
+            </div>
+        </div>
+
+
+
+
+        <!-----------------DUO MATCHES-->
+
+
+
+        <div class="frame">
+
+            <div class="rightframe">
+                <img src="{% static 'tournaments/images/duo.png' %}" alt="" srcset="">
+            </div>
+
+
+            <div class="leftframe">
+                <div class="head">
+                    <h4>
+                        02
+                    </h4>
+    
+    
+                    <span> {{tours.1.tourname}} </span>
+    
+    
+                    <H2>DRIVE YOUR BEAST</H2>
+                </div>
+
+                <div class="schedules">
+                    <div class="date">
+                       <div class="day">
+                        <div class="sday">
+                            <h4 class="aday">{{tours.1.giveday}}</h4>
+                            <h4 class="month">
+                                {{tours.1.fivemonth}}
+                            </h4>
+                        </div>
+
+                       </div>
+
+                       <div class="day">
+                        <div class="sday">
+                            <h4 class="aday">{{tours.1.givetime}}</h4>
+                            <h4 class="month">
+                                {{tours.1.giveamorpm}}
+                            </h4>
+                        </div>
+
+                       </div>
+
+
+                    </div>
+
+                    <div class="timer">
+                        <div class="days">
+                            <h4>
+                                <span id="{{tours.1.tourid}}tday" class="tdate">02</span> <span> days</span>&nbsp;&nbsp;:&nbsp;&nbsp;
+                            </h4>
+                        
+                        </div>
+                        <div class="hours">
+                         <h4>
+                            <span id="{{tours.1.tourid}}thour" class="tdate">12</span>  <span> hh</span> &nbsp;&nbsp;:&nbsp;&nbsp;
+                         </h4>
+
+                        </div>
+                        <div class="minurtes">
+                            <h4>
+                                <span id="{{tours.1.tourid}}tmin" class="tdate">56</span>     <span> min</span>&nbsp;&nbsp;:&nbsp;&nbsp;
+                            </h4>
+                        </div>
+                        <div class="seconds">
+                            <h4>
+                                <span id="{{tours.1.tourid}}tsec" class="tdate">12</span>    <span> sec</span>
+                            </h4>
+                        </div>
+                    </div>
+<!-- 
+                    <div class="players">
+                        <div class="available">
+                            <h4>
+                                50
+                            </h4>
+                        </div>
+                        <div class="total">
+                            <h4>
+                                100
+                            </h4>
+                        </div>
+
+                        <div class="occupied">
+                            <h4>
+                                50
+                            </h4>
+                        </div>
+                    </div> -->
+
+                    <div class="winprice">
+
+                        <h3>
+                            <span> Reward - </span>
+                            <i class="fas fa-rupee-sign"></i> {{tours.1.reward}}
+                        </h3>
+
+                    </div>
+
+                    <div class="settlements">
+                        <div class="entryfee">
+                            <h3>
+                                <span>Entry Fee - </span>
+                                <i class="fas fa-rupee-sign"></i> {{tours.1.entryfee}}
+                            </h3>
+                        </div>
+
+                        <div class="regesterme">
+                            {% if tours.1.availseats > 0 %}
+                            <a  href="{% url 'Regestrations' 1 tours.1.tourid %}"><button>
+                                BOOK MY SPOT
+                            </button></a>
+                            {% else %}
+                            <button style="opacity: 0.4;">
+                                BOOK MY SPOT
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% if tours.1.availseats == 0 %}
+                    <div class="closse">
+                        <h5>Regestrations are closed, because  regestrations has been full for this tournaments</h5>
+                    </div>
+                    {% endif %}
+                </div>
+               
+
+            </div>
+        
+        </div>
+
+
+
+
+        <!--------------->
+
+
+
+
+
+      <!-------SQUAD MATCHES--> 
+      
+      
+
+      <div class="frame">
+        <div class="leftframe">
+            <div class="head">
+                <h4>
+                    03
+                </h4>
+
+
+                <span> {{tours.2.tourname}} </span>
+
+
+                <H2>BRING YOUR SQUAD</H2>
+            </div>
+
+            <div class="schedules">
+                <div class="date">
+                   <div class="day">
+                    <div class="sday">
+                        <h4 class="aday">{{tours.2.giveday}}</h4>
+                        <h4 class="month">
+                            {{tours.2.fivemonth}}
+                        </h4>
+                    </div>
+
+                   </div>
+
+                   <div class="day">
+                    <div class="sday">
+                        <h4 class="aday">{{tours.2.givetime}}</h4>
+                        <h4 class="month">
+                            {{tours.2.giveamorpm}}
+                        </h4>
+                    </div>
+
+                   </div>
+
+
+                </div>
+                <div class="timer">
+                    <div class="days">
+                        <h4>
+                            <span id="{{tours.2.tourid}}tday" class="tdate">02</span> <span> days</span>&nbsp;&nbsp;:&nbsp;&nbsp;
+                        </h4>
+                    
+                    </div>
+                    <div class="hours">
+                     <h4>
+                        <span id="{{tours.2.tourid}}thour" class="tdate">12</span>  <span> hh</span> &nbsp;&nbsp;:&nbsp;&nbsp;
+                     </h4>
+
+                    </div>
+                    <div class="minurtes">
+                        <h4>
+                            <span id="{{tours.2.tourid}}tmin" class="tdate">56</span>     <span> min</span>&nbsp;&nbsp;:&nbsp;&nbsp;
+                        </h4>
+                    </div>
+                    <div class="seconds">
+                        <h4>
+                            <span id="{{tours.2.tourid}}tsec" class="tdate">12</span>    <span> sec</span>
+                        </h4>
+                    </div>
+                </div>
+
+
+                <div class="winprice">
+
+                    <h3>
+                        <span> Reward - </span>
+                        <i class="fas fa-rupee-sign"></i> {{tours.2.reward}}
+                    </h3>
+
+                </div>
+
+                <div class="settlements">
+                    <div class="entryfee">
+                        <h3>
+                            <span>Entry Fee - </span>
+                            <i class="fas fa-rupee-sign"></i> {{tours.2.entryfee}}
+                        </h3>
+                    </div>
+
+                    <div class="regesterme">
+                        {% if tours.2.availseats > 0 %}
+                        <a  href="{% url 'Regestrations' 1 tours.2.tourid %}"><button>
+                            BOOK MY SPOT
+                        </button></a>
+                        {% else %}
+                        <button style="opacity: 0.4;">
+                            BOOK MY SPOT
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if tours.2.availseats == 0 %}
+                <div class="closse">
+                    <h5>Regestrations are closed, because  regestrations has been full for this tournaments</h5>
+                </div>
+                {% endif %}
+            </div>
+           
+
+        </div>
+        <div class="rightframe">
+            <img src="{% static 'tournaments/images/squad.png' %}" alt="" srcset="">
+        </div>
+    </div>
+
+
+
+
+      <!------------>
+
+
+    </main>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="{% static 'tournaments/scripts/home.js' %}"></script>
+
+{% for i in tours %}
+
+
+<script>
+setInterval(function() {
+    countdown("{{i.tourid}}tday","{{i.tourid}}thour","{{i.tourid}}tmin","{{i.tourid}}tsec",'{{i.giveyear}}','{{i.givemonthdigits}}','{{i.giveday}}','{{i.givehour}}','{{i.giveminutes}}','{{i.giveseconds}}', 0);
+  }, 1000);
+</script>
+
+{% endfor %}
+
+
+</body>
+</html>

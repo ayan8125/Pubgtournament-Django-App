@@ -1,0 +1,570 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamersJam | Past Tournaments </title>
+    <link rel="stylesheet" href="{% static 'tournaments/pasttournaments.css' %}">
+      <!-- Custom styles for this template-->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="{% static 'users/css/all.min.css' %}" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .loader{
+        display: none;
+    }
+    .maincontent{
+        filter: blur(0px);
+    }
+</style>
+<body>
+    
+   
+    <div class="sidenav" id="sidenavs">
+        <div class="navbody">
+            <div class="closeicon">
+                <button class="close-btn" id="closebtns">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="navliks">
+                <ul class="navsliks">
+                    <li class="navlik">
+                        <a href="{% url 'pasttournaments' %}">
+                            <i class="fas fa-poll-h"></i>
+                            <h5>Recent Matches</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        <a href="#">
+                            <i class="fas fa-calendar"></i>
+                            <h5>Upcoming Events</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        {% if user.is_authenticated %}
+                        <a href="{% url  'Account' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Accounts</h5>
+                        </a>
+                        {% else %}
+                        <a href="{%  url 'Login' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Account</h5>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+     
+        
+        <div class="firstend">
+            <div class="hamburgeri">
+              <i class="fas fa-bars" id="hamburger"></i>
+            </div>
+            <div class="logoname">
+                <img src="{% static 'tournaments/images/logo2.png' %}" alt="" class="mylogo">
+          </div>
+          </div>
+
+        <nav class="links">
+            <ul>
+                
+
+                <li>
+                    <a href="{% url 'pasttournaments' %}" class="navlink">
+                        Match Results
+                    </a>
+                </li>
+               
+              
+               
+
+            </ul>
+        </nav>
+
+    
+
+    <div class="endnav">
+
+            <ul class="navicons">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'mymatch' %}" class="navlink">
+                   
+                        <i class="fas fa-calendar-alt"></i>
+                    </a>
+                </li>
+                <li id="useraccount">
+                    <a href="{% url 'Account' %}" class="navlink">
+                   
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'home' %}" class="navlink">
+                        
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+              {% else %}
+              <li>
+                <a href="{% url 'Signup' %}" class="navlink">
+               
+                    <h5 class="signup">Signup</h5>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'Login' %}" class="navlink">
+                    
+                    <h5 class="signup">Login</h5>
+                </a>
+            </li>
+              {% endif %} 
+
+              
+
+            </ul>
+       
+            </div>
+
+
+
+</header>
+
+
+<div class="loader" id="loaders"></div>
+
+    <main id="maincontent">
+        <div class="hero">
+
+        
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show bg-white" role="alert" style="position: absolute;text-align: center;z-index: 1;">
+            {% for message in messages %}
+            <span  style="font-weight: bold;font-family: Special Elite,cursive;">  <i class="fas fa-check-circle"></i> {{ message }} </span>
+            {% endfor %}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         {% endif %}
+
+
+
+         {% for key,value in tours.items %}
+         
+        <div class="regestration">
+            {% for key2, value2 in value.items %}
+            {% if key2 == 'winner' %}
+            <div class="clumns winner">
+                
+               
+                {% for key3, value3 in value2.items %}
+                {% if key.tournamenttype == 0 %}
+                <div class="winnerbody first">
+                    <div class="winnerdetails">
+                        <div class="crown">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="winnerimg">
+                               
+                                <img src="{{value3.userimage.url}}"  class="wuserimage">
+                        
+                            </div>
+                        <div class="winnername">
+                            <h4>{{key.winner.first_name}} {{key.winner.last_name}}</h4>
+                          
+                                <h4>{{key3.score}} <i class="fas fa-skull-crossbones"></i></h4>
+                            
+                        </div>
+
+                        <div class="reward">
+                            <div class="pdiv">
+                              
+                                <div class="wreward">
+                                    <h4>Won - <i class="fas fa-rupee-sign"></i> {{key.reward}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% elif key.tournamenttype == 1 %}
+                <div class="winnerbody second">
+                    <div class="winnerdetails">
+                        <div class="crown">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="winnerimg">
+                               
+                                <img src="{{value3.userimage.url}}"  class="wuserimage">
+                        
+                            </div>
+                        <div class="winnername">
+                            <h4>{{key.winner.first_name}} {{key.winner.last_name}}</h4>
+                          
+                                <h4>{{key3.score}} <i class="fas fa-skull-crossbones"></i></h4>
+                            
+                        </div>
+
+                        <div class="reward">
+                            <div class="pdiv">
+                              
+                                <div class="wreward">
+                                    <h4>Won - <i class="fas fa-rupee-sign"></i> {{key.reward}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="winnerbody third">
+                    <div class="winnerdetails">
+                        <div class="crown">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="winnerimg">
+                               
+                                <img src="{{value3.userimage.url}}"  class="wuserimage">
+                        
+                            </div>
+                        <div class="winnername">
+                            <h4>{{key.winner.first_name}} {{key.winner.last_name}}</h4>
+                          
+                                <h4>{{key3.score}} <i class="fas fa-skull-crossbones"></i></h4>
+                            
+                        </div>
+
+                        <div class="reward">
+                            <div class="pdiv">
+                              
+                                <div class="wreward">
+                                    <h4>Won - <i class="fas fa-rupee-sign"></i> {{key.reward}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+         
+               
+            </div>
+            {% endif %}
+            {% if key2 == 'runnerup' %}
+            <div class="clumns  particpants">
+                <div class="tournament">
+                    <h4>
+                       {{key.tourname}}
+                    </h4>
+                </div>
+                <div class="scoreboard">
+                    {% for key4,value4 in value2.items %}
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{value4.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">{{value4.users.first_name}} {{value4.users.last_name}}</h5>
+                                <p>{{key4.user.username}}</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>{{key4.score}}&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    {% endfor %}
+
+                 
+
+
+                </div>
+            </div>
+            {% endif %} 
+            {% endfor %}
+        </div>
+
+
+{% endfor %}
+
+
+
+<!--         
+        <div class="regestration">
+            <div class="clumns winner">
+                <div class="winnerbody second">
+                    <div class="winnerdetails">
+                        <div class="crown">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="winnerimg">
+                               
+                                <img src="{{user.userimage.url}}"  class="wuserimage">
+                        
+                            </div>
+                        <div class="winnername">
+                            <h4>Pranav Shinde</h4>
+                          
+                                <h4>10 <i class="fas fa-skull-crossbones"></i></h4>
+                            
+                        </div>
+
+                        <div class="reward">
+                            <div class="pdiv">
+                              
+                                <div class="wreward">
+                                    <h4>Won - <i class="fas fa-rupee-sign"></i> 4000</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clumns  particpants">
+                <div class="tournament">
+                    <h4>
+                        My Squad Tactics
+                    </h4>
+                </div>
+                <div class="scoreboard">
+                  
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Asim badankari</h5>
+                                <p>asimbadankari21</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>8&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+
+
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Michael Smith</h5>
+                                <p>michael.smith</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>7&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+
+
+                  
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Arsh Shaikh</h5>
+                                <p>arshekh256</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>6&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+
+
+                    
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Shubham Shirshat</h5>
+                                <p>shubhamshishat212</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>6&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                 
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="regestration">
+            <div class="clumns winner ">
+                <div class="winnerbody third">
+                    <div class="winnerdetails">
+                        <div class="crown">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="winnerimg">
+                               
+                                <img src="{{user.userimage.url}}"  class="wuserimage">
+                        
+                            </div>
+                        <div class="winnername">
+                            <h4>Gaming Dynamite</h4>
+                          
+                                <h4>12 <i class="fas fa-skull-crossbones"></i></h4>
+                            
+                        </div>
+
+                        <div class="reward">
+                            <div class="pdiv">
+                              
+                                <div class="wreward">
+                                    <h4>Won - <i class="fas fa-rupee-sign"></i> 2000</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clumns  particpants">
+                <div class="tournament">
+                    <h4>
+                        Duo Bomb
+                    </h4>
+                </div>
+                <div class="scoreboard">
+                  
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">shushanht salunke</h5>
+                                <p>shushant@salunke</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>8&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+
+
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Sam dude</h5>
+                                <p>star12samdude</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>8&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+
+
+                  
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Altamesh Tamboli</h5>
+                                <p>altameshtomboli52</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>7&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                    <div class="divider"></div>
+
+
+
+                    
+                    <div class="scores">
+                        <div class="media">
+                            <img src="{{user.userimage.url}}" class="align-self-start mr-3 userimage" alt="...">
+                            <div class="media-body">
+                              <h5 class="mt-0">Vipul Oswaal</h5>
+                                <p>Vips25</p>
+                            </div>
+                          </div>
+
+                          <div class="kills">
+                              <h4>7&nbsp;&nbsp;&nbsp;<i class="fas fa-skull-crossbones"></i> </h4>
+                          </div>
+                    </div>
+                 
+
+
+                </div>
+            </div>
+        </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </div>
+    </main>
+
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{% static 'tournaments/scripts/pasttournaments.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+.dropdown-content{
+    position: absolute;
+    overflow-y: scroll;
+    width: 0;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    height: 0;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    transition: 0.35s ease-in-out;
+    background: #FFFFFF;
+    opacity: 0;
+}
+
+.showbanks{
+    width: 24rem;
+    height: 10rem;
+    opacity: 1;
+}
+.regestration{
+height: auto;
+}
+
+
+.dropdown-content ul{
+list-style: none;
+
+}
+.dropdown-content ul li{
+    font-weight: bold;
+    font-family: Special Elite,cursive;
+    cursor: pointer;
+}
+
+
+.dropdown-content ul li:hover{
+  
+    color: #FFA500;
+}
+.show {height:10rem;}
+
+
+
+.dropdown-content1 ul{
+list-style: none;
+
+}
+.dropdown-content1 ul li{
+    font-weight: bold;
+    font-family: Special Elite,cursive;
+    cursor: pointer;
+}
+
+
+.dropdown-content1 ul li:hover{
+  
+    color: #FFA500;
+}
+
+
+
+.input-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    border: 2px solid rgb(230, 207, 228);
+    box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+      0px 2px 5px 0px rgba(50, 50, 93, 0.1),
+      0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+    font-family: Special elite,cursive;
+    font-weight: bold;
+    border-radius: 1rem;
+    background: #FFFFFF;
+  }
+  .input{
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding-left: 0.5rem;
+    /* border-top: 1px solid rgb(230, 207, 228);
+    border-bottom: 1px solid rgb(230, 207, 228); */
+  }
+  /* Style the form icons */
+  .icon {
+    padding: 10px;
+    
+    color: #FFA500;
+    min-width: 50px;
+    text-align: center;
+  
+  
+  }
+  .bt button{
+    background-color: #FFA500;
+    color: #fafafa;
+    font-weight: bold;
+    font-family: Bitter;
+    padding: 0.5rem 1rem;
+    border: 1px solid #FFA500;
+    border-radius: 1rem;
+  }
+  
+  .recovery{
+  
+    box-shadow: 0rem 0rem 16px rgba(0,0,0,0.20);
+      border-radius: 1rem;
+  
+    
+  }
+  .recovery h4{
+    font-weight: bold;
+    font-family: special elite,cursive;
+    padding: 0.5rem;
+  }
+  .noe span{
+    font-weight: lighter;
+    color: #3C4257;
+    font-family: Bitter;
+    font-size: 0.8rem;
+  }
+  .qty{
+    padding: 10px;
+    background: #FFA500;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    border-bottom-left-radius: 1rem;                                                                                                                                    em;
+    border-top-left-radius: 1rem;
+  
+  }
+  
+  /* Style the input fields */
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+  
+  }
+  
+  .noe{
+    margin: 0.5rem;
+    
+  }
+
+
+  .horizontalloaders1{
+    width: 50%;
+    height: 10px;
+    position: relative;
+    border-radius:2rem;
+    overflow: hidden !important;
+    display: none;
+    margin-bottom: 0.5rem;
+    background-color: #FFA500;
+    animation-name: examples;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  
+  }
+
+  @keyframes examples {
+    0%   {background-color:#FFA500; left:0px; top:0px;}
+    90%   {background-color:#FFA500; left:90%; top:0px;}
+    100% {background-color:#FFA500; left:100%; top:0px;width: 10%;}
+  }
+
+  #alernote{
+    font-family : bitter;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  @media  screen and (max-width:375px){
+    .showbanks{
+        width:18rem;
+    }
+  }
+
+
+@media screen and (max-width:770px){
+
+}
+

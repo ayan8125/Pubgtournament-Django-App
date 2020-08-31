@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamersJam | Regestraions for Tour</title>
+
+      <!-- Custom styles for this template-->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+  <link href="{% static 'users/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'users/css/sb-admin-2.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'users/css/account.css' %}">
+</head>
+<style>
+    .loader{
+        display: none;
+    }
+    .maincontent{
+        filter: blur(0px);
+    }
+</style>
+<body>
+    
+    <div class="sidenav" id="sidenavs">
+        <div class="navbody">
+            <div class="closeicon">
+                <button class="close-btn" id="closebtns">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="navliks">
+                <ul class="navsliks">
+                    <li class="navlik">
+                        <a href="{% url 'pasttournaments' %}">
+                            <i class="fas fa-poll-h"></i>
+                            <h5>Recent Matches</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        <a href="#">
+                            <i class="fas fa-calendar"></i>
+                            <h5>Upcoming Events</h5>
+                        </a>
+                    </li>
+                    <div class="divide"></div>
+                    <li class="navlik">
+                        {% if user.is_authenticated %}
+                        <a href="{% url  'Account' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Accounts</h5>
+                        </a>
+                        {% else %}
+                        <a href="{%  url 'Login' %}">
+                            <i class="fas fa-user"></i>
+                            <h5>Account</h5>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+     
+        
+        <div class="firstend">
+            <div class="hamburgeri">
+              <i class="fas fa-bars" id="hamburger"></i>
+            </div>
+            <div class="logoname">
+                <img src="{% static 'tournaments/images/logo2.png' %}" alt="" class="mylogo">
+          </div>
+          </div>
+
+        <nav class="links">
+            <ul>
+                
+
+                <li>
+                    <a href="{% url 'pasttournaments' %}" class="navlink">
+                        Match Results
+                    </a>
+                </li>
+               
+
+            </ul>
+        </nav>
+
+    
+
+    <div class="endnav">
+
+            <ul class="navicons">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'mymatch' %}" class="navlink">
+                   
+                        <i class="fas fa-calendar-alt"></i>
+                    </a>
+                </li>
+             
+                <li>
+                    <a href="{% url 'home' %}" class="navlink">
+                        
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+              {% else %}
+              <li>
+                <a href="{% url 'Signup' %}" class="navlink">
+               
+                    <h5 class="signup">Signup</h5>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'Login' %}" class="navlink">
+                    
+                    <h5 class="signup">Login</h5>
+                </a>
+            </li>
+              {% endif %} 
+
+            </ul>
+       
+            </div>
+
+
+
+</header>
+
+<div class="popupforms" id="nameform">
+    <div class="close">
+        <i class="fas fa-times"  id="closenameform"></i>
+    </div>
+    <form method="POST" class="popupform">
+        {% csrf_token %} 
+        <div class="form-field">
+            <i class="fas fa-user"></i>
+            <input type="text" id="fullname" class="input-field" value="{{ username }}"  name="username" placeholder="Fullname">
+        </div>
+        <h4 id="fullnameinvalid" class="invalid">
+        </h4>
+        <button class="regesterme" id="submitname">
+            Submit
+        </button>
+    </form>
+
+ </div>
+
+
+ <div class="popupforms" id="emailform">
+    <div class="close">
+        <i class="fas fa-times"  id="closeemailform"></i>
+    </div>
+    <div class="note" id="nmailsend">
+        <h4>
+           An <i class="fas fa-envelope"></i> Email changing link is been send at given email address, please check your inbox.
+        </h4>
+    </div>
+    <form method="POST" class="popupform">
+        {% csrf_token %} 
+        <div class="form-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" class="input-field" value="{{ user.email }}"  name="username" placeholder="Fullname">
+        </div>
+        <h4 id="emailinvalid" class="invalid">
+        </h4>
+        <button class="regesterme" id="submitemail">
+            Submit
+        </button>
+    </form>
+
+    
+
+ </div>
+
+
+
+ <div class="popupforms" id="passwordform">
+    <div class="close">
+        <i class="fas fa-times"  id="closepasswordform"></i>
+    </div>
+    <form method="POST" class="popupform">
+        {% csrf_token %} 
+        <div class="form-field">
+            <i class="fas fa-key"></i>
+            <input type="password" id="currentpassword" class="input-field"   name="username" placeholder="Enter current password">
+        </div>
+        <h4 id="currenpassinvalid" class="invalid">
+        </h4>
+        <div class="form-field">
+            <i class="fas fa-key"></i>
+            <input type="password" id="newpassword" class="input-field"   name="username" placeholder="Enter new password" autocomplete="off">
+        </div>
+        <div class="form-field">
+            <i class="fas fa-key"></i>
+            <input type="password" id="confirmnewpassword" class="input-field"   name="username" placeholder="confirm new password" autocomplete="off">
+        </div>
+        <h4 id="newpassinvalid" class="invalid">
+        </h4>
+        <button class="regesterme" id="submitpassword">
+            Submit
+        </button>
+    </form>
+
+ </div>
+
+
+ <div class="popupforms" id="numberform">
+    <div class="close">
+        <i class="fas fa-times"  id="closenumberform"></i>
+    </div>
+    <form method="POST" class="popupform" id="numbersform">
+        {% csrf_token %} 
+        <div class="form-field">
+            <i class="fas fa-number"></i>
+            <input type="number" id="number" class="input-field"  value={{account.phnumber1}} name="username" placeholder="Enter current password">
+        </div>
+        <h4 id="numberinvalid" class="invalid">
+        </h4>
+        
+        <button class="regesterme" id="submitnumber">
+            Submit
+        </button>
+    </form>
+
+    <form method="POST" class="popupform" id="otpforms">
+        {% csrf_token %} 
+        <div class="note">
+            <h4>
+                An Otp has been send at given mobile Number, please enter it below.
+            </h4>
+        </div>
+        <div class="form-field">
+            <i class="fas fa-number"></i>
+            <input type="text" id="otp" class="input-field"   name="username" placeholder="Enter OTP">
+        </div>
+        <h4 id="otpinvalid" class="invalid">
+        </h4>
+        
+        <button class="regesterme" id="submitotp">
+            Submit
+        </button>
+    </form>
+
+ </div>
+
+
+<div class="loader" id="loaders"></div>
+
+    <main id="maincontent">
+        <div class="hero">
+
+        
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show bg-white" role="alert" style="position: absolute;text-align: center;z-index: 1;">
+            {% for message in messages %}
+            <span  style="font-weight: bold;font-family: Special Elite,cursive;">  <i class="fas fa-check-circle"></i> {{ message }} </span>
+            {% endfor %}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         {% endif %}
+         
+
+        
+         <div class="message" id="messages">
+            <i class="fas fa-times" onclick="{document.getElementById('messages').style.width='0';document.getElementById('messages').style.visibility='hidden'}"></i>
+            
+            <p id="actualmessage"></p>
+     
+            </div>
+
+
+
+        <div class="regestration" id="userdetails">
+            <div class="userinfo">
+                <div class="icons">
+                    <div class="userimg">
+                        <img src="{{account.userimage.url}}" alt="" id="myimage">
+                    </div>
+                    <form method="POST" class="profile">
+                        {% csrf_token %}
+                        <input type="file" name="image" id="userimage" hidden>
+                    </form>
+                    <div class="camera">
+                        <i class="fas fa-camera" id="camerafield"></i>
+                    </div>
+                    <div class="name">
+                            <h4>{{user.first_name}} {{user.last_name}}</h4>
+                    </div>
+                </div>
+
+                <div class="editzone">
+                    <div class="editname">
+                        <div class="currentname">
+                            <h4>
+                                <i class="fas fa-user"></i> Name
+                            </h4>
+                            <h4 class="actualvalue">
+                                {{user.first_name}} {{user.last_name}}
+                            </h4>
+                        </div>
+                        <div class="editbutton">
+                            <button type="button" id="editnamebutton">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="editname">
+                        <div class="currentname">
+                            <h4>
+                                <i class="fas fa-mobile"></i> Mobile Number
+                            </h4>
+                            <h4 class="actualvalue">
+                                {{account.phnumber1}}
+                            </h4>
+                        </div>
+                        <div class="editbutton">
+                            <button type="button" id="editnumberdbutton">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="editname">
+                        <div class="currentname">
+                            <h4>
+                                <i class="fas fa-envelope"></i> E-mail
+                            </h4>
+                            <h4 class="actualvalue">
+                                {{user.email}}
+                            </h4>
+                        </div>
+                        <div class="editbutton">
+                            <button type="button" id="editmailbutton">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="editname">
+                        <div class="currentname">
+                            <h4>
+                                <i class="fas fa-key"></i> Password
+                            </h4>
+                            <h4 class="actualvalue">
+                                ****
+                            </h4>
+                        </div>
+                        <div class="editbutton">
+                            <button type="button" id="editpasswordbutton">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    </main>
+
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="{% static 'users/js/account.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% for key,value in mynotifydict.items %}
+{% if forloop.counter == 1 %}
+<div class="date">
+  <span style="font-weight: bold;font-family: bitter;">
+   {{key}}
+  </span>
+</div>
+{% else %}
+<div class="date pt-4">
+  <span style="font-weight: bold;font-family: bitter;">
+   {{key}}
+  </span>
+</div>
+{% endif %}
+{% for i in value %}
+<div class="mainmess">
+  <h4></h4>
+  <div class="notimessages mr-2 ml-2 p-2">
+    <span class="p-2" >
+      {{ i.0.message }}
+
+
+    </span>
+    <br>
+    <div class="time">
+      <span >
+       {{i.1}}
+      </span>
+    </div>
+
+  </div>
+</div>
+{% endfor %}
+{% endfor %}
