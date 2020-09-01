@@ -96,7 +96,7 @@ def Regestrationprox(request, regestrationid):
     userp = usersdetails.objects.filter(users=request.user).first()
     if solouser.razorpayorderid == '':
         fee = solouser.regestrationfee
-        client = razorpay.Client(auth=("rzp_test_57quymdSuXAsSs", "ctdt2Oef5Uq5gpEVyGRpks6E"))
+        client = razorpay.Client(auth=("*****", "******"))
         order_amount = fee*100 #multiple amount by 100 , eg 10000 means 100.00 or 29935 == 299.35
         order_currency = 'INR'
         order_receipt = 'order_rcptid_11'
@@ -120,7 +120,7 @@ def handlepayment(request,response):
     verify = len(responses)
     if verify == 3:
         try:
-            client = razorpay.Client(auth=("rzp_test_57quymdSuXAsSs", "ctdt2Oef5Uq5gpEVyGRpks6E")) 
+            client = razorpay.Client(auth=("******", "*****")) 
             params_dict = { 
                 'razorpay_order_id': responses[0], 
                 'razorpay_payment_id':responses[1],
