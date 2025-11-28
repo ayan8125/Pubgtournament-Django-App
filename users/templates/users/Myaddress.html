@@ -5,114 +5,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FontAwesome icons & custom fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Bree+Serif|Righteous|Special+Elite&display=swap" rel="stylesheet">
+    <!-- Custom CSS for address page -->
     <link rel="stylesheet" href="{% static 'users/css/Myaddress.css' %}">
-    <title>MYAdrsess | GamersJam</title>
+    <title>My Address | GamersJam</title>
 </head>
+
 <body>
+    <!-- Page-load spinner / loader -->
     <div class="loader" id="loaders"></div>
-    <img src="{% static 'users/images/design.png' %}" class="wave" srcset="">
+
+    <!-- Decorative image / background wave -->
+    <img src="{% static 'users/images/design.png' %}" class="wave" alt="">
+
     <main id="hero">
         <div class="maincontent">
-
-
             <div class="rows">
-
+                <!-- Left column: illustration or avatar/map image -->
                 <div class="columns leftcolumn">
-
-                <img src="{% static 'users/images/mymap.svg' %}" alt="" class="avtar"> 
+                    <img src="{% static 'users/images/mymap.svg' %}" alt="Map illustration" class="avatar"> 
                 </div>
+
+                <!-- Right column: address form -->
                 <div class="columns rightcolumn">
-<div class="address">
-                    <div class="ddresshead">
-                       
-                        <h2>
-                            My Address
-                        </h2>
-                    </div>
-                    <div class="addressform">
-                        <form method="POST">
-                            <div class="erormessge">
-                                <h4 id="error"></h4>
-                            </div>
-                            {% csrf_token %} 
-                            <div class="countrydiv">
-                                <div class="input-container country">
-                                    <div class="icondiv">
-                                        <i class="fas fa-flag"></i>
+                    <div class="address">
+                        <div class="addresshead">
+                            <h2>My Address</h2>
+                        </div>
+                        <div class="addressform">
+                            <form method="POST">
+                                {% csrf_token %}
+
+                                <!-- Error message placeholder -->
+                                <div class="errormessage">
+                                    <h4 id="error"></h4>
+                                </div>
+
+                                <!-- Country dropdown / custom list -->
+                                <div class="countrydiv">
+                                    <div class="input-container country">
+                                        <div class="icondiv"><i class="fas fa-flag"></i></div>
+                                        <div class="inputdiv">
+                                            <input type="text" autocomplete="off" placeholder="Country" name="country" id="country">
+                                        </div>
+                                        <div class="icondiv">
+                                            <!-- Button/icon to toggle country list dropdown -->
+                                            <i class="fas fa-sort-down" onclick="showcountries()"></i>
+                                        </div>
                                     </div>
+
+                                    <div class="countrylist" id="countrylists">
+                                        <ul class="countrylist-ul">
+                                            {# Loop over countries provided by django_countries #}
+                                            {% for code, name in countries.items %}
+                                              <li class="country-item" id="{{ code }}" onclick="selectThis('{{ name }}')">{{ name }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- State input -->
+                                <div class="input-container">
+                                    <div class="icondiv"><i class="fas fa-shield-alt"></i></div>
                                     <div class="inputdiv">
-                                        <input type="text" autocomplete="off" placeholder="Country" name="country" id="country">
-                                    </div>
-                                    <div class="icondiv">
-                                        <i class="fas fa-sort-down" onclick="showcountries()"></i>
+                                        <input type="text" placeholder="State" id="state" name="state">
                                     </div>
                                 </div>
-                                <div class="counrtylist" id="counrtylists">
-                                    <ul class="contrylist">
-                                        {% for code , name in countries.items %}
-                                        <li class="counrtys" id="{{ code }}" onclick="selectthis('{{name}}')">{{ name }}</li>
-                                        {% endfor %}
-                                      
-                                     
-                                    </ul>
-                                </div>
-                            </div>
-                           
-                            <div class="input-container">
-                                <div class="icondiv">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div class="inputdiv">
-                                    <input type="text" placeholder="state" id="state" name="state">
-                                </div>
-                               
-                            </div>
-                            <div class="input-container">
-                                <div class="icondiv">
-                                    <i class="fas fa-map-signs"></i>
-                                </div>
-                                <div class="inputdiv">
-                                    <input type="text" placeholder="addres" id="addres" >
-                                </div>
-                               
-                            </div>
-                            <div class="input-container">
-                                <div class="icondiv">
-                                    <i class="fas fa-map-pin"></i>
-                                </div>
-                                <div class="inputdiv">
-                                    <input type="text" placeholder="City" id="city" name="city">
-                                </div>
-                               
-                            </div>
-                            <div class="input-container">
-                                <div class="icondiv">
-                                    <i class="fas fa-map-marker"></i>
-                                </div>
-                                <div class="inputdiv">
-                                    <input type="text" placeholder="picode" name="pincode" id="pincode">
-                                </div>
-                               
-                            </div>
 
-                            <div class="submits">
-                                <button class="Submit-btn" id="submitaddress" >
-                                    Submit
-                                </button>
-                            </div>
-                         
-                        </form>
+                                <!-- Address / Street input -->
+                                <div class="input-container">
+                                    <div class="icondiv"><i class="fas fa-map-signs"></i></div>
+                                    <div class="inputdiv">
+                                        <input type="text" placeholder="Address" id="address" name="address">
+                                    </div>
+                                </div>
+
+                                <!-- City input -->
+                                <div class="input-container">
+                                    <div class="icondiv"><i class="fas fa-map-pin"></i></div>
+                                    <div class="inputdiv">
+                                        <input type="text" placeholder="City" id="city" name="city">
+                                    </div>
+                                </div>
+
+                                <!-- Pincode / ZIP code input -->
+                                <div class="input-container">
+                                    <div class="icondiv"><i class="fas fa-map-marker"></i></div>
+                                    <div class="inputdiv">
+                                        <input type="text" placeholder="Pincode" id="pincode" name="pincode">
+                                    </div>
+                                </div>
+
+                                <!-- Submit button -->
+                                <div class="submits">
+                                    <button class="Submit-btn" id="submitaddress">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                </div>
-            </div>
-
-
-        </div>
+                </div>  <!-- end rightcolumn -->
+            </div>  <!-- end rows -->
+        </div>  <!-- end maincontent -->
     </main>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- JS: jQuery (for dropdown etc.) and custom script for country-select logic -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{% static 'users/js/Myaddress.js' %}"></script>
 </body>
 </html>
